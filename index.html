@@ -3,65 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BASKET001 | MASTER INTELLIGENCE</title>
+    <title>BASKET001 | INTELLIGENCE | Feb 11, 2026</title>
     <style>
         :root {
-            --bg-color: #050505;
-            --card-bg: #0f0f0f;
-            --text-main: #e0e0e0;
-            --text-dim: #888;
-            
-            /* Section Accents */
-            --ai-color: #00ff41;
-            --war-color: #ff3333;
-            --cn-color: #ffD700;
-            --mkt-color: #00ccff;
-            
-            --font-mono: 'Courier New', Courier, monospace;
-            --font-sans: 'Segoe UI', system-ui, sans-serif;
+            --bg-color: #050505; --card-bg: #0f0f0f; --text-main: #e0e0e0; --text-dim: #888;
+            --ai-color: #00ff41; --war-color: #ff3333; --cn-color: #ffD700; --mkt-color: #00ccff;
+            --font-mono: 'Courier New', Courier, monospace; --font-sans: 'Segoe UI', system-ui, sans-serif;
         }
-
-        /* RESET & BASE */
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            margin: 0;
-            padding-top: 70px; /* Nav space */
-        }
-
-        /* STICKY NAV */
-        .nav-deck {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
-            background: rgba(5, 5, 5, 0.95);
-            border-bottom: 1px solid #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-        }
-
-        .nav-btn {
-            padding: 10px 20px;
-            margin: 0 5px;
-            text-transform: uppercase;
-            font-family: var(--font-mono);
-            font-weight: bold;
-            font-size: 0.9rem;
-            color: #666;
-            text-decoration: none;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s;
-        }
-
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-sans); margin: 0; padding-top: 70px; }
+        
+        /* NAV */
+        .nav-deck { position: fixed; top: 0; left: 0; width: 100%; height: 70px; background: rgba(5,5,5,0.95); border-bottom: 1px solid #333; display: flex; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(10px); }
+        .nav-btn { padding: 10px 20px; margin: 0 5px; text-transform: uppercase; font-family: var(--font-mono); font-weight: bold; font-size: 0.9rem; color: #666; text-decoration: none; border-bottom: 3px solid transparent; transition: all 0.3s; }
         .nav-btn:hover { color: #fff; background: rgba(255,255,255,0.05); }
         .nav-btn[href="#ai"]:hover { border-color: var(--ai-color); color: var(--ai-color); }
         .nav-btn[href="#war"]:hover { border-color: var(--war-color); color: var(--war-color); }
@@ -69,196 +24,33 @@
         .nav-btn[href="#markets"]:hover { border-color: var(--mkt-color); color: var(--mkt-color); }
 
         /* SECTIONS */
-        .sector {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-bottom: 1px solid #222;
-        }
-
-        .sector-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 40px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #333;
-        }
-
-        .sector-title {
-            font-family: var(--font-mono);
-            font-size: 2.5rem;
-            margin: 0;
-            letter-spacing: -2px;
-            text-transform: uppercase;
-        }
-
-        .sector-status {
-            margin-left: auto;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            padding: 5px 10px;
-            border-radius: 4px;
-            background: #111;
-        }
-
-        /* GRID LAYOUTS */
-        .grid-hero {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
-        .grid-standard {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-        }
+        .sector { padding: 80px 20px; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid #222; }
+        .sector-header { display: flex; align-items: center; margin-bottom: 40px; padding-bottom: 10px; border-bottom: 2px solid #333; }
+        .sector-title { font-family: var(--font-mono); font-size: 2.5rem; margin: 0; letter-spacing: -2px; text-transform: uppercase; }
+        .sector-status { margin-left: auto; font-family: var(--font-mono); font-size: 0.8rem; padding: 5px 10px; border-radius: 4px; background: #111; }
 
         /* CARDS */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid #222;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.2s, border-color 0.2s;
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #444;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .card-media {
-            position: relative;
-            background: #000;
-            border-bottom: 1px solid #222;
-            overflow: hidden;
-        }
-
-        .card-media-video {
-            aspect-ratio: 16/9;
-            width: 100%;
-            display: block;
-        }
-        
-        .card-media-img {
-            height: 180px;
-            width: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .card:hover .card-media-img { opacity: 1; }
-
+        .grid-hero { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-bottom: 50px; }
+        .grid-standard { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+        .card { background: var(--card-bg); border: 1px solid #222; border-radius: 8px; overflow: hidden; transition: transform 0.2s; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+        .card:hover { transform: translateY(-5px); border-color: #444; }
+        .card-media-video { aspect-ratio: 16/9; width: 100%; display: block; }
         .card-body { padding: 25px; flex-grow: 1; }
+        .card-tag { display: inline-block; font-size: 0.75rem; font-weight: bold; padding: 4px 8px; border-radius: 4px; margin-bottom: 15px; text-transform: uppercase; }
+        .card-title { font-size: 1.4rem; margin: 0 0 15px 0; line-height: 1.3; font-weight: 700; }
+        .card-desc { font-size: 1rem; color: var(--text-dim); line-height: 1.6; }
 
-        .card-tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 4px 8px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .card-title {
-            font-size: 1.4rem;
-            margin: 0 0 15px 0;
-            line-height: 1.3;
-            font-weight: 700;
-        }
-
-        .card-desc {
-            font-size: 1rem;
-            color: var(--text-dim);
-            line-height: 1.6;
-        }
-
-        .source-list {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #222;
-        }
-
-        .source-link {
-            display: flex;
-            align-items: center;
-            font-size: 0.85rem;
-            color: #777;
-            text-decoration: none;
-            margin-bottom: 8px;
-            transition: color 0.2s;
-        }
-
-        .source-link:hover { color: #fff; }
-        .source-link::before { content: "►"; margin-right: 8px; font-size: 0.7em; }
-
-        /* THEME OVERRIDES */
-        /* AI */
-        #ai .sector-title { color: var(--ai-color); }
-        #ai .sector-header { border-color: var(--ai-color); }
-        #ai .card-tag { background: rgba(0, 255, 65, 0.15); color: var(--ai-color); border: 1px solid rgba(0,255,65,0.2); }
-        #ai .card:hover { border-color: var(--ai-color); }
-
-        /* WAR */
-        #war .sector-title { color: var(--war-color); }
-        #war .sector-header { border-color: var(--war-color); }
-        #war .card-tag { background: rgba(255, 51, 51, 0.15); color: var(--war-color); border: 1px solid rgba(255,51,51,0.2); }
-        #war .card:hover { border-color: var(--war-color); }
-
-        /* CHINA */
-        #china .sector-title { color: var(--cn-color); }
-        #china .sector-header { border-color: var(--cn-color); }
-        #china .card-tag { background: rgba(255, 215, 0, 0.15); color: var(--cn-color); border: 1px solid rgba(255,215,0,0.2); }
-        #china .card:hover { border-color: var(--cn-color); }
-
-        /* MARKETS */
-        #markets .sector-title { color: var(--mkt-color); }
-        #markets .sector-header { border-color: var(--mkt-color); }
-        .ticker-card { text-align: center; padding: 40px 20px; background: linear-gradient(180deg, #0f0f0f 0%, #0a0a0a 100%); }
-        .price { font-size: 2.8rem; font-weight: bold; margin: 15px 0; letter-spacing: -1px; }
-        .delta { font-family: var(--font-mono); font-weight: bold; font-size: 1.1rem; }
-        .up { color: #00ff41; }
-        .down { color: #ff3333; }
-
-        /* SCANLINE */
-        .scanlines {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: 9000;
-        }
-
-        /* UTILS */
-        .sub-header {
-            font-family: var(--font-mono);
-            color: #555;
-            margin: 40px 0 20px;
-            padding-left: 20px;
-            border-left: 2px solid #333;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        @media (max-width: 900px) {
-            .grid-hero { grid-template-columns: 1fr; }
-        }
+        /* THEMES */
+        #ai .sector-title { color: var(--ai-color); } #ai .sector-header { border-color: var(--ai-color); } #ai .card-tag { background: rgba(0,255,65,0.15); color: var(--ai-color); }
+        #war .sector-title { color: var(--war-color); } #war .sector-header { border-color: var(--war-color); } #war .card-tag { background: rgba(255,51,51,0.15); color: var(--war-color); }
+        #china .sector-title { color: var(--cn-color); } #china .sector-header { border-color: var(--cn-color); } #china .card-tag { background: rgba(255,215,0,0.15); color: var(--cn-color); }
+        #markets .sector-title { color: var(--mkt-color); } #markets .sector-header { border-color: var(--mkt-color); } 
+        .ticker-card { text-align: center; padding: 40px 20px; } .price { font-size: 2.8rem; font-weight: bold; margin: 15px 0; } .up { color: #00ff41; } .down { color: #ff3333; }
+        
+        @media (max-width: 900px) { .grid-hero { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
-<div class="scanlines"></div>
 
 <nav class="nav-deck">
     <a href="#overview" class="nav-btn">Briefing</a>
@@ -271,187 +63,164 @@
 <div id="overview" style="height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #1a1a1a 0%, #050505 80%);">
     <h1 style="font-size: 5rem; margin-bottom: 10px; letter-spacing: 10px; font-weight: 300;">INTELLIGENCE</h1>
     <div style="font-family: var(--font-mono); color: #666; font-size: 1.2rem;">COMMANDER: BASKET001 // <span style="color: var(--ai-color)">ONLINE</span></div>
-    <div style="margin-top: 30px; color: #444;">▼ SCROLL FOR UPLINK ▼</div>
+    <div style="margin-top: 20px; font-family: var(--font-mono); color: #444;">Feb 11, 2026</div>
 </div>
 
-<!-- ============================================ -->
-<!-- AI / TECH SECTION                            -->
-<!-- ============================================ -->
+<!-- AI -->
 <section id="ai" class="sector">
-    <div class="sector-header">
-        <h2 class="sector-title">AI & Technology</h2>
-        <div class="sector-status">SYSTEM STATUS: OPTIMAL</div>
-    </div>
-
-    <!-- HERO: Top News -->
+    <div class="sector-header"><h2 class="sector-title">AI & Technology</h2><div class="sector-status">SYSTEM STATUS: OPTIMAL</div></div>
     <div class="grid-hero">
-        <!-- Main Feature -->
-        <a href="https://entire.io/blog/hello-entire-world/" target="_blank" class="card">
-            <div class="card-media">
-                <iframe class="card-media-video" src="https://www.youtube.com/embed/results?search_query=entire.io+launch" title="Entire.io Launch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="card">
+            <div class="card-media-video" style="position:relative; width:100%; height:0; padding-bottom:56.25%; background:#000;">
+                <iframe 
+                    style="position:absolute; top:0; left:0; width:100%; height:100%;" 
+                    src="https://www.youtube.com/embed/sPxcsUcP9x4" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
             </div>
             <div class="card-body">
                 <span class="card-tag">Platform Launch</span>
-                <h3 class="card-title">Entire.io: The New OS for Agents</h3>
-                <p class="card-desc">Ex-GitHub CEO launches "Entire", a platform designed specifically for autonomous agents. This marks a pivotal shift from "copilot" assistance to fully managed agent workforces.</p>
-                <div class="source-list">
-                    <span class="source-link">Launch Blog Post</span>
-                    <span class="source-link">TechCrunch Analysis</span>
-                </div>
+                <h3 class="card-title"><a href="https://entire.io/blog/hello-entire-world/" style="text-decoration:none; color:inherit;">Entire.io: The New OS for Agents</a></h3>
+                <p class="card-desc">Ex-GitHub CEO launches 'Entire', a platform designed specifically for autonomous agents. This marks a pivotal shift from 'copilot' assistance to fully managed agent workforces.</p>
             </div>
-        </a>
-        
-        <!-- Sidebar -->
+        </div>
         <div style="display: flex; flex-direction: column; gap: 20px;">
-             <a href="https://oxide.computer/blog/our-200m-series-c" target="_blank" class="card" style="flex: 1;">
+            
+            <a href="https://oxide.computer/blog/our-200m-series-c" target="_blank" class="card" style="flex: 1;">
                 <div class="card-body">
                     <span class="card-tag">Infrastructure</span>
                     <h3 class="card-title">Oxide Raises $200M</h3>
-                    <p class="card-desc">The "Cloud Computer" company secures massive funding to build on-premise rack-scale computers for the AI era.</p>
+                    <p class="card-desc">The 'Cloud Computer' company secures massive funding to build on-premise rack-scale computers.</p>
                 </div>
             </a>
             <a href="https://github.com/google/langextract" target="_blank" class="card" style="flex: 1;">
                 <div class="card-body">
                     <span class="card-tag">Open Source</span>
-                    <h3 class="card-title">Google "LangExtract"</h3>
-                    <p class="card-desc">New Python library for structured data extraction using LLMs. Currently trending #1 on GitHub.</p>
+                    <h3 class="card-title">Google 'LangExtract'</h3>
+                    <p class="card-desc">New Python library for structured data extraction using LLMs. Trending #1 on GitHub.</p>
                 </div>
             </a>
         </div>
     </div>
-
-    <div class="sub-header">Trending Models (Hugging Face)</div>
     <div class="grid-standard">
+        
         <a href="https://huggingface.co/Qwen/Qwen3-Coder-Next" target="_blank" class="card">
             <div class="card-body">
                 <span class="card-tag">Coding</span>
                 <h3 class="card-title">Qwen3-Coder-Next</h3>
-                <p class="card-desc">Alibaba | 734 Likes today. The current SOTA for open-weight coding.</p>
+                <p class="card-desc">Alibaba | 734 Likes. SOTA open-weight coding.</p>
             </div>
         </a>
         <a href="https://huggingface.co/zai-org/GLM-OCR" target="_blank" class="card">
             <div class="card-body">
                 <span class="card-tag">Vision</span>
                 <h3 class="card-title">GLM-OCR</h3>
-                <p class="card-desc">Z.ai | 928 Likes. Superior text extraction for complex docs.</p>
+                <p class="card-desc">Z.ai | 928 Likes. Superior text extraction.</p>
             </div>
         </a>
         <a href="https://huggingface.co/Lightricks/LTX-2" target="_blank" class="card">
             <div class="card-body">
-                <span class="card-tag">Video Gen</span>
+                <span class="card-tag">Video</span>
                 <h3 class="card-title">LTX-2</h3>
-                <p class="card-desc">Lightricks | 1.4k Likes. High-fidelity image-to-video generation.</p>
+                <p class="card-desc">Lightricks | 1.4k Likes. High-fidelity video gen.</p>
             </div>
         </a>
     </div>
 </section>
 
-<!-- ============================================ -->
-<!-- WARZONES SECTION                             -->
-<!-- ============================================ -->
+<!-- WAR -->
 <section id="war" class="sector">
-    <div class="sector-header">
-        <h2 class="sector-title">Global Conflict Monitor</h2>
-        <div class="sector-status" style="color: var(--war-color); border: 1px solid var(--war-color);">DEFCON 3</div>
-    </div>
-
+    <div class="sector-header"><h2 class="sector-title">Global Conflict Monitor</h2><div class="sector-status" style="color: var(--war-color); border: 1px solid var(--war-color);">DEFCON 3</div></div>
     <div class="grid-hero">
         <div class="card">
-            <div class="card-media">
-                 <iframe class="card-media-video" src="https://www.youtube.com/embed/results?search_query=ukraine+war+daily+update" title="War Update" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="card-media-video" style="position:relative; width:100%; height:0; padding-bottom:56.25%; background:#000;">
+                <iframe 
+                    style="position:absolute; top:0; left:0; width:100%; height:100%;" 
+                    src="https://www.youtube.com/embed/9T89_lDkIq0" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
             </div>
             <div class="card-body">
                 <span class="card-tag">Ukraine / Russia</span>
                 <h3 class="card-title">Peace Talks vs. Power Grid Strikes</h3>
-                <p class="card-desc">A complex dual-track situation: Envoys are meeting in Abu Dhabi for US-brokered talks, while Russian drone barrages continue to target Kyiv's energy infrastructure during a severe cold snap.</p>
-                <div class="source-list">
-                    <a href="https://apnews.com/article/russia-ukraine-talks-peace-abu-dhabi-witkoff-31ccc70ae7599507bc5a98a6cd87e2aa" target="_blank" class="source-link">AP: US and Russia agree to dialogue</a>
-                    <a href="https://apnews.com/article/russia-ukraine-war-energy-attacks-war-crimes-1ccee964d8a0b539fe168402b32b4e87" target="_blank" class="source-link">AP: Strikes on energy facilities</a>
-                </div>
+                <p class="card-desc">Envoys meeting in Abu Dhabi for US-brokered talks while Russian drone barrages continue to target Kyiv's energy infrastructure.</p>
             </div>
         </div>
         <div class="card">
             <div class="card-body">
-                <span class="card-tag">Gaza / Israel</span>
-                <h3 class="card-title">Rafah Crossing Reopens</h3>
-                <p class="card-desc">Critical infrastructure reopening for limited travel and medical evacuation. US "Board of Peace" initiative moving to Phase 2.</p>
-                <div class="source-list">
-                    <a href="https://apnews.com/article/rafah-gaza-israel-palestinians-egypt-crossing-b78d6a15790148a697634cd303c3b5a9" target="_blank" class="source-link">AP: Patients evacuated to Egypt</a>
-                    <a href="https://apnews.com/article/israel-hamas-ceasefire-trump-gaza-kushner-758867a971b917f8f21b056fe9a281ca" target="_blank" class="source-link">AP: Kushner's vision for rebuilding</a>
-                </div>
+                <span class="card-tag">Gaza</span>
+                <h3 class="card-title"><a href="https://apnews.com/hub/israel-hamas-war" style="text-decoration:none; color:inherit;">Rafah Crossing Reopens</a></h3>
+                <p class="card-desc">Critical infrastructure reopening for limited travel. US 'Board of Peace' initiative active.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============================================ -->
-<!-- CHINA SECTION                                -->
-<!-- ============================================ -->
+<!-- CHINA -->
 <section id="china" class="sector">
-    <div class="sector-header">
-        <h2 class="sector-title">China / APAC [中国]</h2>
-        <div class="sector-status">REGION: STABLE</div>
-    </div>
-
+    <div class="sector-header"><h2 class="sector-title">China / APAC [中国]</h2><div class="sector-status">REGION: STABLE</div></div>
     <div class="grid-standard">
-        <a href="https://www.scmp.com/news/china/science/article/3343144/chinas-mengzhou-spacecraft-passes-key-test-2030-crewed-moon-mission-long-march-10-rocket" target="_blank" class="card">
+        
+        <a href="https://www.scmp.com/news/china/science" target="_blank" class="card">
             <div class="card-body">
-                <span class="card-tag">Space [航天]</span>
+                <span class="card-tag">Space</span>
                 <h3 class="card-title">Mengzhou Spacecraft Success</h3>
-                <p class="card-desc">China's "Dream Vessel" passes critical safety tests, clearing the path for the 2030 crewed lunar landing mission.</p>
+                <p class="card-desc">China's 'Dream Vessel' passes critical safety tests for 2030 moon mission.</p>
             </div>
         </a>
-        <a href="https://www.scmp.com/news/china/science/article/3343074/chinese-scientists-help-create-machine-eye-may-be-faster-human-vision" target="_blank" class="card">
+        <a href="https://www.scmp.com/news/china/science" target="_blank" class="card">
             <div class="card-body">
-                <span class="card-tag">Tech [科技]</span>
-                <h3 class="card-title">"Machine Eye" Breakthrough</h3>
-                <p class="card-desc">New visual sensor developed by Chinese scientists claims reaction speeds significantly faster than the human eye.</p>
+                <span class="card-tag">Tech</span>
+                <h3 class="card-title">'Machine Eye' Breakthrough</h3>
+                <p class="card-desc">New visual sensor faster than human sight developed by Chinese scientists.</p>
             </div>
         </a>
-        <a href="https://www.scmp.com/news/china/article/3342980/china-becomes-brazils-biggest-vehicle-exporter-january-surpassing-argentina" target="_blank" class="card">
+        <a href="https://www.scmp.com/news/china/economy" target="_blank" class="card">
             <div class="card-body">
-                <span class="card-tag">Trade [贸易]</span>
+                <span class="card-tag">Trade</span>
                 <h3 class="card-title">Brazil Auto Dominance</h3>
-                <p class="card-desc">China has overtaken Argentina as Brazil's #1 vehicle exporter, ending a 30-year regional trade dynamic.</p>
+                <p class="card-desc">China overtakes Argentina as Brazil's #1 vehicle exporter.</p>
             </div>
         </a>
     </div>
 </section>
 
-<!-- ============================================ -->
-<!-- MARKETS SECTION                              -->
-<!-- ============================================ -->
+<!-- MARKETS -->
 <section id="markets" class="sector">
-    <div class="sector-header">
-        <h2 class="sector-title">Global Markets</h2>
-        <div class="sector-status">VOLATILITY: HIGH</div>
-    </div>
-
-    <div class="grid-standard" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-        <a href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" class="card ticker-card">
+    <div class="sector-header"><h2 class="sector-title">Global Markets</h2><div class="sector-status">VOLATILITY: HIGH</div></div>
+    <div class="grid-standard">
+        
+        <div class="card ticker-card">
             <div class="card-tag">CRYPTO</div>
             <h3 class="card-title">Bitcoin (BTC)</h3>
             <div class="price">$68,072</div>
-            <div class="delta down">▼ 2.40%</div>
-        </a>
-        <a href="https://finance.yahoo.com/quote/ETH-USD/" target="_blank" class="card ticker-card">
+            <div class="delta down">-2.40%</div>
+        </div>
+        <div class="card ticker-card">
             <div class="card-tag">CRYPTO</div>
             <h3 class="card-title">Ethereum (ETH)</h3>
             <div class="price">$2,000</div>
-            <div class="delta down">▼ 3.43%</div>
-        </a>
-        <a href="https://finance.yahoo.com/quote/TSLA/" target="_blank" class="card ticker-card">
+            <div class="delta down">-3.43%</div>
+        </div>
+        
+        <div class="card ticker-card">
             <div class="card-tag">EQUITY</div>
             <h3 class="card-title">Tesla (TSLA)</h3>
             <div class="price">$425.21</div>
-            <div class="delta up">▲ 1.89%</div>
-        </a>
-        <a href="https://finance.yahoo.com/quote/NVDA/" target="_blank" class="card ticker-card">
+            <div class="delta up">+1.89%</div>
+        </div>
+        <div class="card ticker-card">
             <div class="card-tag">EQUITY</div>
             <h3 class="card-title">Nvidia (NVDA)</h3>
             <div class="price">$188.54</div>
-            <div class="delta down">▼ 0.79%</div>
-        </a>
+            <div class="delta down">-0.79%</div>
+        </div>
     </div>
 </section>
 
